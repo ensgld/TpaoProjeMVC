@@ -1,0 +1,47 @@
+﻿@model MapViewModel
+@{
+    ViewData["Title"] = "Ana Sayfa";
+    @* var sahaJson = System.Text.Json.JsonSerializer.Serialize(Model.Sahalar); //burada Sahaların verisini Json'a çevirdik *@
+}
+
+@section Styles {
+    @*Şimdi burada dahil etme işlerini yaptık burası Styles section'ına *@
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+}
+
+
+
+@await Html.PartialAsync("Partials/Saha/_SahaGrid")
+@await Html.PartialAsync("Partials/Kuyu/_KuyuGrid")
+@await Html.PartialAsync("Partials/Wellbores/_WellboreGrid")
+
+
+@await Html.PartialAsync("Partials/_Map")
+
+
+@* <script>
+    var sahaVerileri = @Html.Raw(sahaJson);//Bu sayede sahaVerileri artık JavaScript’te kullanılabilir bir veri haline geliyor
+</script> 
+
+
+@*
+Bunlar C#'tan ilk yüklenme için kullanıcaktık ama gerek kalmadı onu da ajax ile yaptık 
+@{
+    var sahaJson = System.Text.Json.JsonSerializer.Serialize(Model.Sahalar);
+}
+<script>
+    var sahaVerileri = @Html.Raw(sahaJson);
+</script> *@
+
+
+@section Scripts {
+    @*burası ise Scripts section'ına *@
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="~/js/datagrids.js"></script>
+    <script src="~/js/map.js"></script>
+
+}

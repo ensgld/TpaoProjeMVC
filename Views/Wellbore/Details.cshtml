@@ -1,0 +1,111 @@
+@model Wellbore
+<section class="mt-5">
+    <div class="container d-flex justify-content-center">
+        <div class="col-lg-8">
+            <article class="card shadow p-4 rounded-4 border-0">
+                <h3 class="mb-3 text-center text-dark fw-bold">@Model.wellboreName</h3>
+
+                <div class="text-center mb-2">
+
+
+                    <p class="h5 fw-bold">Enlem:@Model.Kuyu.Saha.Latitude </p>
+                    <p class="h5 fw-bold">Boylam:@Model.Kuyu.Saha.Longitude</p>
+                </div>
+
+                <dl class="row mb-3 border-top pt-3">
+                    <dt class="col-4">Şehir</dt>
+                    <dd class="col-8">@Model.Kuyu.Saha.City</dd>
+
+                    <dt class="col-4">Ait Olduğu Kuyu </dt>
+                    <dd class="col-8">@Model.Kuyu.kuyuAdı</dd>
+                    <dt class="col-4">Ait Olduğu Saha </dt>
+                    <dd class="col-8">@Model.Kuyu.Saha.sahaAdı</dd>
+                </dl>
+
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <button class="btn btn-warning px-4 rounded-pill" data-bs-toggle="modal"
+                        data-bs-target="#wellboreMapModal">
+                        <i class="fa-solid fa-map-pin"></i> Haritada Göster
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="wellboreMapModal" tabindex="-1" aria-labelledby="wellboreMapModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="wellboreMapModalLabel">@Model.wellboreName - Konum</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Kapat"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="wellboreDetailMap" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <a asp-controller="Wellbore" asp-action="Edit" asp-route-id="@Model.WellboreId"
+                        class="btn btn-light border px-4 rounded-pill">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Düzenle
+                    </a>
+                    <a asp-controller="Wellbore" asp-action="Delete" asp-route-id="@Model.WellboreId"
+                        class="btn btn-danger border px-4 rounded-pill">
+                        <i class="fa-solid fa-trash-can"></i> Sil
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    <!-- Leaflet CSS ve JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        let wellboreMapInitialized = false;
+
+        const wellboreMapModal = document.getElementById("wellboreMapModal");
+        wellboreMapModal.addEventListener("shown.bs.modal", function () {
+            if (!wellboreMapInitialized) {
+                getWellboreLocationByCoordinates(@Model.Kuyu.Saha.Latitude, @Model.Kuyu.Saha.Longitude, "@Model.wellboreName", "@Model.Kuyu.Saha.City");
+                wellboreMapInitialized = true;
+            }
+        });
+
+        // Kuyu  özel harita
+        function getWellboreLocationByCoordinates(lat, lng, title, subtitle) {
+            const mapContainer = document.getElementById("wellboreDetailMap");
+
+            if (!mapContainer) {
+                console.warn("wellboreDetailMap divi bulunamadı.");
+                return;
+            }
+
+            if (window.wellboreMapInstance) {
+                window.wellboreMapInstance.remove();
+                window.wellboreMapInstance = null;
+            }
+
+            window.wellboreMapInstance = L.map(mapContainer).setView([lat, lng], 13);
+
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: "&copy; OpenStreetMap contributors",
+            }).addTo(window.wellboreMapInstance);
+
+            L.marker([lat, lng])
+                .addTo(window.wellboreMapInstance)
+                .bindPopup(`<b>${title}</b><br>${subtitle}`)
+                .openPopup();
+
+            setTimeout(() => {
+                if (window.wellboreMapInstance) {
+                    window.wellboreMapInstance.invalidateSize();
+                }
+            }, 500);
+        }
+    </script>
+}

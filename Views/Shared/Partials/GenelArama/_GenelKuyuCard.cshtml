@@ -1,0 +1,15 @@
+@model Kuyu
+
+<div id="genelAramaCol" class="col">
+    <div id="genelArama" class="card shadow-sm border-0 hover-shadow">
+        <div class="card-body p-3">
+            <h6 class="card-title text-success mb-1">Kuyu: @Model.kuyuAdı</h6>
+            <p class="card-text text-danger medium mb-2">
+                Saha: @Model.Saha?.sahaAdı
+            </p>
+
+            <a asp-controller="Kuyu" asp-action="Details" asp-route-id="@Model.KuyuId"
+                class="btn btn-outline-success btn-sm w-100">Detay</a>
+        </div>
+    </div>
+</div>

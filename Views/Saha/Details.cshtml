@@ -1,0 +1,111 @@
+@model Saha
+@section Styles {
+    @*Şimdi burada dahil etme işlerini yaptık burası Styles section'ına *@
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+}
+<section class="mt-5">
+    <div class="container d-flex justify-content-center">
+        <div class="col-lg-8">
+            <article class="card shadow p-4 rounded-4 border-0">
+                <h3 class="mb-3 text-center text-dark fw-bold">@Model.sahaAdı</h3>
+
+                <div class="text-center mb-2">
+
+
+                    <p class="h5 fw-bold">Enlem:@Model.Latitude </p>
+                    <p class="h5 fw-bold">Boylam:@Model.Longitude</p>
+                </div>
+
+                <dl class="row mb-3 border-top pt-3">
+                    <dt class="col-4">Şehir</dt>
+                    <dd class="col-8">@Model.City</dd>
+
+                    <dt class="col-4">Toplam Kuyu</dt>
+                    <dd class="col-8">@Model.kuyuList?.Count()</dd>
+                </dl>
+
+                <div class="text-center mb-3">
+                    <button class="btn btn-outline-dark rounded-pill px-4" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#kuyuListesi" aria-expanded="false">
+                        Kuyu Listesini Göster / Gizle
+                    </button>
+                </div>
+
+                <div class="collapse" id="kuyuListesi">
+                    @if (Model.kuyuList != null && Model.kuyuList.Any())
+                    {
+                        <ul class="list-group list-group-flush">
+                            @foreach (var kuyu in Model.kuyuList)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>@kuyu.kuyuAdı</span>
+                                    <a href="/Kuyu/Details/@kuyu.KuyuId"
+                                        class="btn btn-sm btn-outline-primary rounded-pill">Detay</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning text-center mt-2">Bu sahaya ait kuyu bulunmamaktadır.</div>
+                    }
+                </div>
+
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <button class="btn btn-warning px-4 rounded-pill" data-bs-toggle="modal" data-bs-target="#mapModal">
+                        <i class="fa-solid fa-map-pin"></i> Haritada Göster
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="mapModalLabel">@Model.sahaAdı - Konum</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Kapat"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="detailMap" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a asp-controller="Saha" asp-action="Edit" asp-route-id="@Model.SahaId"
+                        class="btn btn-light border px-4 rounded-pill">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Düzenle
+                    </a>
+                    <a asp-controller="Saha" asp-action="Delete" asp-route-id="@Model.SahaId"
+                        class="btn btn-danger border px-4 rounded-pill">
+                        <i class="fa-solid fa-trash-can"></i> Sil
+                    </a>
+                </div>
+
+
+
+            </article>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @*burası ise layouttaki Scripts section'ına *@
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="~/js/map.js"></script>
+    <script>
+
+
+
+
+        let mapInitialized = false;
+
+        const mapModal = document.getElementById("mapModal");
+        mapModal.addEventListener("shown.bs.modal", function () {
+            if (!mapInitialized) {
+                getSahaByCoordinates(@Model.Latitude, @Model.Longitude, "@Model.sahaAdı", "@Model.City");
+                mapInitialized = true;
+            }
+        });
+    </script>
+
+}

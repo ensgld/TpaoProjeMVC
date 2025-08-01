@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid d-flex justify-content-center">
+        <a id="tpaoPanel" class="navbar-brand me-auto" asp-controller="Home" asp-action="Index">TPAO Panel</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Saha" asp-action="Index">Sahalar</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Kuyu" asp-action="Index">Kuyular</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Wellbore" asp-action="Index">Wellbore’lar</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Eklemeler
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" asp-controller="Wellbore" asp-action="Create">Yeni Wellbore</a>
+                        </li>
+                        <li><a class="dropdown-item" asp-controller="Kuyu" asp-action="Create">Yeni Kuyu</a></li>
+                        <li><a class="dropdown-item" asp-controller="Saha" asp-action="Create">Yeni Saha</a></li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>

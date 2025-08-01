@@ -1,0 +1,20 @@
+@model Kuyu
+
+<div class="col">
+    <div class="card h-100 small-card shadow-sm border-0 hover-shadow">
+        <div class="card-body p-2">
+            <h6 class="card-title text-primary mb-1">Kuyu Adı: @Model.kuyuAdı</h6>
+
+            <p class="card-text text-muted small mb-2">
+                Şehir:@Model.Saha.City
+            </p>
+            <p class="card-text mb-2 fw-bold text-danger">
+                Ait Olduğu Saha:@Model.Saha.sahaAdı
+            </p>
+
+
+            <a asp-controller="Kuyu" asp-action="Details" asp-route-id="@Model.KuyuId"
+                class="btn btn-outline-primary btn-sm w-100">Detay</a>
+        </div>
+    </div>
+</div>

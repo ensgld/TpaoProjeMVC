@@ -1,0 +1,27 @@
+<section class="top-bar">
+    <div class="container">
+        <div class="row gy-2 align-items-center">
+            <div class="col-lg-2 col-sm-4 col-4">
+                <a href="/" class="navbar-brand"><i class="fa-solid fa-truck-fast"></i> TPAO Proje</a>
+            </div>
+
+            <div class="col-lg-5 col-sm-8 col-8 order-lg-last">
+                <div class="text-end">
+                    <a href="#" class="btn btn-light">
+                        <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline-block">Enes Geldi</span>
+                    </a>
+
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <form asp-controller="Home" asp-action="List" method="get"> @*Burada Get methodu yapıldı *@
+                    <div class="input-group">
+                        <input name="arananKelime" type="text" placeholder="Lokasyon Adı Giriniz..."
+                            class="form-control" value="@ViewData["ArananKelime"]">
+                        <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

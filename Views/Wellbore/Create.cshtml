@@ -1,0 +1,55 @@
+@model WellboreCreateModel
+
+@{
+    ViewData["Title"] = "Yeni Wellbore Ekle";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <h2 class="text-primary mb-4">Yeni Wellbore Ekle</h2>
+
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label asp-for="wellboreName" class="form-label"></label>
+                    <input asp-for="wellboreName" class="form-control" />
+                    <span asp-validation-for="wellboreName" class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="KuyuId" class="form-label">Kuyu Seç</label>
+                    <select asp-for="KuyuId" class="form-select"></select>
+                    <span asp-validation-for="KuyuId" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </form>
+
+            <script>
+                $(document).ready(function () {
+                    $('#KuyuId').select2({
+                        placeholder: "Kuyu ara...",
+                        allowClear: true,
+                        ajax: {
+                            url: '/Kuyu/Ara',
+                            dataType: 'json',
+                            delay: 250,
+                            data: function (params) {
+                                return {
+                                    arananKuyu: params.term
+                                };
+                            },
+                            processResults: function (data) {
+                                return {
+                                    results: data.results
+                                };
+                            }
+                        }
+                    });
+                });
+            </script>
+@section Scripts {
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

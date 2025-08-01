@@ -1,0 +1,181 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = tpaoProjeMvc
+build_property.RootNamespace = tpaoProjeMvc
+build_property.ProjectDir = C:\Users\enesg\OneDrive\Masaüstü\tpaoProjeMvc\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\enesg\OneDrive\Masaüstü\tpaoProjeMvc
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Home/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Kuyu/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3V5dVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Kuyu/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3V5dVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Kuyu/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3V5dVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Kuyu/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3V5dVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Kuyu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3V5dVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Kuyu/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3V5dVxMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Saha/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FoYVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Saha/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FoYVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Saha/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FoYVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Saha/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FoYVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Saha/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FoYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Saha/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FoYVxMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/GenelArama/_GenelKuyuCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEdlbmVsQXJhbWFcX0dlbmVsS3V5dUNhcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/GenelArama/_GenelSahaCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEdlbmVsQXJhbWFcX0dlbmVsU2FoYUNhcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/GenelArama/_GenelWellboreCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEdlbmVsQXJhbWFcX0dlbmVsV2VsbGJvcmVDYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/Kuyu/_KuyuCards.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEt1eXVcX0t1eXVDYXJkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/Kuyu/_KuyuGrid.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEt1eXVcX0t1eXVHcmlkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/Saha/_SahaCards.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXFNhaGFcX1NhaGFDYXJkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/Saha/_SahaGrid.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXFNhaGFcX1NhaGFHcmlkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/Wellbores/_WellboreCards.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXFdlbGxib3Jlc1xfV2VsbGJvcmVDYXJkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/Wellbores/_WellboreGrid.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXFdlbGxib3Jlc1xfV2VsbGJvcmVHcmlkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/_Map.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXF9NYXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/_Messages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXF9NZXNzYWdlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/_Navbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXF9OYXZiYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/Partials/_Topbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXF9Ub3BiYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Wellbore/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VsbGJvcmVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Wellbore/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VsbGJvcmVcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Wellbore/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VsbGJvcmVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Wellbore/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VsbGJvcmVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Wellbore/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VsbGJvcmVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/Wellbore/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VsbGJvcmVcTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/enesg/OneDrive/Masaüstü/tpaoProjeMvc/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

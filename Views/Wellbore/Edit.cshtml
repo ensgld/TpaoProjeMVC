@@ -1,0 +1,55 @@
+@model WellboreEditModel
+
+@{
+    ViewData["Title"] = "Wellbore Güncelle";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <h2 class="text-primary mb-4">Wellbore Güncelle</h2>
+
+            <form asp-controller="Wellbore" asp-action="Edit" asp-route-id="@Model.WellboreId" method="post">
+                <input type="hidden" name="WellboreId" value="@Model.WellboreId">
+                <div class="mb-3">
+                    <label asp-for="wellboreName" class="form-label"></label>
+                    <input asp-for="wellboreName" class="form-control" />
+                    <span asp-validation-for="wellboreName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="KuyuId" class="form-label">Kuyu Seç</label>
+                    <select asp-for="KuyuId" class="form-select"></select>
+                    <span asp-validation-for="KuyuId" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </form>
+
+            <script>
+                $(document).ready(function () {
+                    $('#KuyuId').select2({
+                        placeholder: "Kuyu ara...",
+                        allowClear: true,
+                        ajax: {
+                            url: '/Kuyu/Ara',
+                            dataType: 'json',
+                            delay: 250,
+                            data: function (params) {
+                                return {
+                                    arananKuyu: params.term
+                                };
+                            },
+                            processResults: function (data) {
+                                return {
+                                    results: data.results
+                                };
+                            }
+                        }
+                    });
+                });
+            </script>
+@section Scripts {
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

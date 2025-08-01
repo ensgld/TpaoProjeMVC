@@ -1,0 +1,36 @@
+@model List<Kuyu>
+@{
+    ViewData["Title"] = "Kuyu Listesi";
+}
+
+<div class="container my-4">
+    <div class="text-center mb-4">
+        <h4 class="fw-bold text-success">Kuyu Arama ve Listeleme</h4>
+        <p class="text-muted small">Kuyu adına göre arama yapabilir veya tüm kuyuları listeleyebilirsiniz.</p>
+    </div>
+
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6 col-lg-5">
+            <form asp-controller="Kuyu" asp-action="List" method="get">
+                <div class="input-group input-group-sm shadow-sm">
+                    <input name="arananKelime" type="text" class="form-control" placeholder="Kuyu adı giriniz...">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-search"></i> Ara
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <h4>Bazı Kuyular</h4>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+        @{
+            List<Kuyu> randomKuyuList = (List<Kuyu>)ViewData["RandomKuyuList"]!;
+            foreach (Kuyu kuyu in randomKuyuList)
+            {
+
+                @await Html.PartialAsync("Partials/Kuyu/_KuyuCards", kuyu)
+            }
+        }
+
+    </div>
+</div>

@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Wellbore Listesi";
+}
+
+<div class="container my-4">
+    <div class="text-center mb-4">
+        <h4 class="fw-bold text-danger">Wellbore Arama ve Listeleme</h4>
+        <p class="text-muted small">Wellbore adına göre arama yapabilir veya tüm wellbore'ları görebilirsiniz.</p>
+    </div>
+
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6 col-lg-5">
+            <form asp-controller="Wellbore" asp-action="List" method="get">
+                <div class="input-group input-group-sm shadow-sm">
+                    <input name="q" type="text" class="form-control" placeholder="Wellbore adı giriniz..."
+                        value="@ViewData["q"]">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-search"></i> Ara
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <h4>Bazı Wellbore'lar</h4>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+        @{
+            List<Wellbore> randomWellboreList = (List<Wellbore>)ViewData["RandomWellboreList"]!;
+            foreach (Wellbore wellbore in randomWellboreList)
+            {
+
+                @await Html.PartialAsync("Partials/Wellbores/_WellboreCards", wellbore)
+            }
+        }
+    </div>
+</div>

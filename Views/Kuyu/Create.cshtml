@@ -1,0 +1,54 @@
+@model KuyuCreateModel
+
+@{
+    ViewData["Title"] = "Yeni Kuyu Ekle";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <h2 class="text-primary mb-4">Yeni Kuyu Ekle</h2>
+
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label asp-for="kuyuAdi" class="form-label"></label>
+                    <input asp-for="kuyuAdi" class="form-control" />
+                    <span asp-validation-for="kuyuAdi" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="SahaId" class="form-label">Saha Seç</label>
+                    <select asp-for="SahaId" class="form-select"></select>
+                    <span asp-validation-for="SahaId" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </form>
+
+            <script>
+                $(document).ready(function () {
+                    $('#SahaId').select2({
+                        placeholder: "Saha ara...",
+                        allowClear: true,
+                        ajax: {
+                            url: '/Saha/Ara',
+                            dataType: 'json',
+                            delay: 250,
+                            data: function (params) {
+                                return {
+                                    arananSaha: params.term
+                                };
+                            },
+                            processResults: function (data) {
+                                return {
+                                    results: data.results
+                                };
+                            }
+                        }
+                    });
+                });
+            </script>
+@section Scripts {
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

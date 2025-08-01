@@ -1,0 +1,140 @@
+@model Kuyu
+<section class="mt-5">
+    <div class="container d-flex justify-content-center">
+        <div class="col-lg-8">
+            <article class="card shadow p-4 rounded-4 border-0">
+                <h3 class="mb-3 text-center text-dark fw-bold">@Model.kuyuAdı</h3>
+
+                <div class="text-center mb-2">
+
+
+                    <p class="h5 fw-bold">Enlem:@Model.Saha.Latitude </p>
+                    <p class="h5 fw-bold">Boylam:@Model.Saha.Longitude</p>
+                </div>
+
+                <dl class="row mb-3 border-top pt-3">
+                    <dt class="col-4">Şehir</dt>
+                    <dd class="col-8">@Model.Saha.City</dd>
+                    <dt class="col-4">Ait olduğu Saha:</dt>
+                    <dd class="col-8">@Model.Saha.sahaAdı</dd>
+
+                    <dt class="col-4">Toplam Wellbore</dt>
+                    <dd class="col-8">@Model.wellbores?.Count()</dd>
+                </dl>
+
+
+                <div class="text-center mb-3">
+                    <button class="btn btn-outline-dark rounded-pill px-4" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#kuyuListesi" aria-expanded="false">
+                        Wellbore Listesini Göster / Gizle
+                    </button>
+                </div>
+
+                <div class="collapse" id="kuyuListesi">
+                    @if (Model.wellbores != null && Model.wellbores.Any())
+                    {
+                        <ul class="list-group list-group-flush">
+                            @foreach (var wellbore in Model.wellbores)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>@wellbore.wellboreName</span>
+                                    <a asp-controller="Wellbore" asp-action="Details" asp-route-id="@wellbore.WellboreId"
+                                        class="btn btn-sm btn-outline-primary rounded-pill">Detay</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning text-center mt-2">Bu kuyuya ait Wellbore bulunmamaktadır.</div>
+                    }
+                </div>
+
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <button class="btn btn-warning px-4 rounded-pill" data-bs-toggle="modal"
+                        data-bs-target="#kuyuMapModal">
+                        <i class="fa-solid fa-map-pin"></i> Haritada Göster
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="kuyuMapModal" tabindex="-1" aria-labelledby="kuyuMapModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="kuyuMapModalLabel">@Model.kuyuAdı - Konum</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Kapat"></button>
+                                </div>
+                                <div class="modal-body p-0">
+                                    <div id="kuyuDetailMap" style="height: 400px; width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a asp-controller="Kuyu" asp-action="Edit" asp-route-id="@Model.KuyuId"
+                        class="btn btn-light border px-4 rounded-pill">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Düzenle
+                    </a>
+                    <a asp-controller="Kuyu" asp-action="Delete" asp-route-id="@Model.KuyuId"
+                        class="btn btn-danger border px-4 rounded-pill">
+                        <i class="fa-solid fa-trash-can"></i> Sil
+                    </a>
+                </div>
+
+
+
+        </div>
+        </article>
+    </div>
+    </div>
+</section>
+@section Scripts {
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        let kuyuMapInitialized = false;
+
+        const kuyuMapModal = document.getElementById("kuyuMapModal");
+        kuyuMapModal.addEventListener("shown.bs.modal", function () {
+            if (!kuyuMapInitialized) {
+                getKuyuLocationByCoordinates(@Model.Saha.Latitude, @Model.Saha.Longitude, "@Model.kuyuAdı", "@Model.Saha.City");
+                kuyuMapInitialized = true;
+            }
+        });
+
+        function getKuyuLocationByCoordinates(lat, lng, title, subtitle) {
+            const mapContainer = document.getElementById("kuyuDetailMap");
+
+            if (!mapContainer) {
+                console.warn("kuyuDetailMap divi bulunamadı.");
+                return;
+            }
+
+            if (window.kuyuMapInstance) {
+                window.kuyuMapInstance.remove();
+                window.kuyuMapInstance = null;
+            }
+
+            window.kuyuMapInstance = L.map(mapContainer).setView([lat, lng], 13);
+
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: "&copy; OpenStreetMap contributors",
+            }).addTo(window.kuyuMapInstance);
+
+            L.marker([lat, lng])
+                .addTo(window.kuyuMapInstance)
+                .bindPopup(`<b>${title}</b><br>${subtitle}`)
+                .openPopup();
+
+            setTimeout(() => {
+                if (window.kuyuMapInstance) {
+                    window.kuyuMapInstance.invalidateSize();
+                }
+            }, 500);
+        }
+    </script>
+}

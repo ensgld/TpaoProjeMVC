@@ -1,0 +1,79 @@
+@model GenelAramaModel
+
+
+
+
+
+<div class="text-center mt-4">
+    <h2 class="fw-bold text-primary">Genel Arama Sonuçları</h2>
+    <p class="text-muted">Aşağıda eşleşen saha, kuyu ve wellbore kayıtlarını görüntüleyebilirsiniz.</p>
+</div>
+
+@if (!Model.Sahalar.Any() && !Model.Kuyular.Any() && !Model.Wellbores.Any())
+{
+    <div class="alert alert-warning text-center" role="alert">
+        "@ViewData["ArananKelime"]" araması ile eşleşen herhangi bir kayıt bulunamadı.
+    </div>
+}
+else
+{
+    <!-- Sahalar -->
+    <div class="ms-4 mb-5">
+        <h4 class="text-secondary mb-3">Eşleşen Sahalar</h4>
+        @if (Model.Sahalar.Any())
+        {
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                @foreach (var saha in Model.Sahalar)
+                {
+                    @await Html.PartialAsync("Partials/GenelArama/_GenelSahaCard", saha)
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning text-center" role="alert">
+                "@ViewData["ArananKelime"]" araması ile eşleşen herhangi bir saha bulunamadı.
+            </div>
+        }
+    </div>
+
+    <!-- Kuyular -->
+    <div class="ms-4 mb-5">
+        <h4 class="text-secondary mb-3">Eşleşen Kuyular</h4>
+        @if (Model.Kuyular.Any())
+        {
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                @foreach (var kuyu in Model.Kuyular)
+                {
+                    @await Html.PartialAsync("Partials/GenelArama/_GenelKuyuCard", kuyu)
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning text-center" role="alert">
+                "@ViewData["ArananKelime"]" araması ile eşleşen herhangi bir kuyu bulunamadı.
+            </div>
+        }
+    </div>
+
+    <!-- Wellbores -->
+    <div class="ms-4 mb-5">
+        <h4 class="text-secondary mb-3">Eşleşen Wellbore'lar</h4>
+        @if (Model.Wellbores.Any())
+        {
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                @foreach (var wb in Model.Wellbores)
+                {
+                    @await Html.PartialAsync("Partials/GenelArama/_GenelWellboreCard", wb)
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning text-center" role="alert">
+                "@ViewData["ArananKelime"]" araması ile eşleşen herhangi bir wellbore bulunamadı.
+            </div>
+        }
+    </div>
+}

@@ -1,0 +1,43 @@
+@model List<Saha>
+@{
+    ViewData["Title"] = "Saha Listesi";
+}
+
+<div class="container my-4">
+    <div class="text-center mb-4">
+        <h4 class="fw-bold text-primary">Saha Arama ve Listeleme</h4>
+        <p class="text-muted small">Saha adını yazarak arayabilir veya tüm Sahaları inceleyebilirsiniz.</p>
+    </div>
+
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6 col-lg-5">
+            <form asp-controller="Saha" asp-action="List" method="get">
+                <div class="input-group input-group-sm shadow-sm">
+                    <input name="arananKelime" type="text" class="form-control" value="@ViewData["arananKelime"]"
+                        placeholder="Saha adı giriniz...">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Ara
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <h4>Eşleşen Sahalar</h4>
+    @if (@Model.Count == 0)
+    {
+        <div class="alert alert-danger">Saha bulunamadı</div>
+    }
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+        @{
+
+            foreach (Saha saha in @Model)
+            {
+
+                @await Html.PartialAsync("Partials/Saha/_SahaCards", saha)
+            }
+        }
+
+    </div>
+
+
+</div>

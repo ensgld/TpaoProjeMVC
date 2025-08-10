@@ -1,4 +1,4 @@
-@model List<Kuyu>
+@model KuyuListViewModel
 @{
     ViewData["Title"] = "Kuyu Listesi";
 }
@@ -13,8 +13,8 @@
         <div class="col-md-6 col-lg-5">
             <form asp-controller="Kuyu" asp-action="List" method="get">
                 <div class="input-group input-group-sm shadow-sm">
-                    <input name="arananKelimeq" type="text" class="form-control" placeholder="Kuyu adı giriniz..."
-                        value="@ViewData["arananKelime"]">
+                    <input name="arananKelimeq" type="text" class="form-control" value="@Model.ArananKelime"
+                        placeholder="Kuyu adı giriniz..." value="@ViewData["arananKelime"]">
                     <button type="submit" class="btn btn-success">
                         <i class="fas fa-search"></i> Ara
                     </button>
@@ -24,12 +24,12 @@
     </div>
     <h4>Eşleşen Kuyular</h4>
 
-    @if (@Model.Count == 0)
+    @if (@Model.AramaSonuclari.Count == 0)
     {
         <div class="alert alert-danger">Kuyu bulunamadı</div>
     }
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-        @foreach (var kuyu in Model)
+        @foreach (var kuyu in Model.AramaSonuclari)
         {
             @await Html.PartialAsync("Partials/Kuyu/_KuyuCards", kuyu)
         }

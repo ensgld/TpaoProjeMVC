@@ -56,15 +56,31 @@ public class HomeController : Controller
     {
 
         var sahaList = _dataContext.Sahalar
-        .Where(s => s.sahaAdı.ToLower().Contains(arananKelime))
+        .Where(saha => saha.sahaAdı.ToLower().Contains(arananKelime.ToLower())).Select(saha => new SahaAramaDto
+        {
+            SahaId = saha.SahaId,
+            SahaAdi = saha.sahaAdı
+
+        })
         .ToList();
 
         var kuyuList = _dataContext.Kuyular.Include(k => k.Saha)
-            .Where(k => k.kuyuAdı.ToLower().Contains(arananKelime))
+            .Where(kuyu => kuyu.kuyuAdı.ToLower().Contains(arananKelime.ToLower())).Select(kuyu => new KuyuAramaDto
+            {
+                KuyuId = kuyu.KuyuId,
+                KuyuAdi = kuyu.kuyuAdı,
+                SahaAdi = kuyu.Saha.sahaAdı
+            })
             .ToList();
 
         var wellboreList = _dataContext.Wellbores.Include(w => w.Kuyu).ThenInclude(w => w.Saha)
-            .Where(w => w.wellboreName.ToLower().Contains(arananKelime))
+            .Where(w => w.wellboreName.ToLower().Contains(arananKelime.ToLower())).Select(wellbore => new WellboreAramaDto
+            {
+                WellboreId = wellbore.WellboreId,
+                WellboreName = wellbore.wellboreName,
+                KuyuAdi = wellbore.Kuyu.kuyuAdı,
+                SahaAdi = wellbore.Kuyu.Saha.sahaAdı
+            })
             .ToList();
         var model = new GenelAramaModel
         {

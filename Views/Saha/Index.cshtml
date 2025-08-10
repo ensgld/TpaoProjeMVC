@@ -1,4 +1,4 @@
-@model List<Saha>
+@model SahaListViewModel
 @{
     ViewData["Title"] = "Saha Listesi";
 }
@@ -14,7 +14,8 @@
         <div class="col-md-6 col-lg-5">
             <form asp-controller="Saha" asp-action="List" method="get">
                 <div class="input-group input-group-sm shadow-sm">
-                    <input name="arananKelime" type="text" class="form-control" placeholder="Saha adı giriniz...">
+                    <input name="arananKelime" type="text" class="form-control" value="@Model.ArananKelime"
+                        placeholder="Saha adı giriniz...">
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-search"></i> Ara
                     </button>
@@ -28,10 +29,8 @@
     <!-- Burası kartların sahaların falan olduğu kısım  -->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
         @{
-            List<Saha> randomSahaList = (List<Saha>)ViewData["RandomSahaList"]!;
-            foreach (Saha saha in randomSahaList)
+            @foreach (var saha in Model.RandomSahalar)
             {
-
                 @await Html.PartialAsync("Partials/Saha/_SahaCards", saha)
             }
         }

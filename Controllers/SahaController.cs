@@ -20,30 +20,47 @@ public class SahaController : Controller
     public ActionResult Index()
     {
 
-        var randomSahaIds = _dataContext.Sahalar
-               .OrderBy(s => Guid.NewGuid())  // rnd.Next() yerine daha iyi
-               .Select(s => s.SahaId)
-               .Take(12)
-               .ToList();
-        var randomSahaList = _dataContext.Sahalar
-            .AsNoTracking()
-            .Where(s => randomSahaIds.Contains(s.SahaId))
-            .Include(s => s.kuyuList)
-            .ToList();
+        var randomSahalar = _dataContext.Sahalar
+          .OrderBy(r => Guid.NewGuid()) // rastgele sahalar
+          .Take(16)
+          .Select(saha => new SahaAramaDto
+          {
+              SahaId = saha.SahaId,
+              SahaAdi = saha.sahaAdı,
+              City = saha.City
+          })
+          .ToList();
+        var model = new SahaListViewModel
+        {
+            RandomSahalar = randomSahalar,
+        };
 
-        ViewData["RandomSahaList"] = randomSahaList;
-        return View();
+        return View(model);
     }
     public ActionResult List(string arananKelime)
     {
-        var query = _dataContext.Sahalar.AsQueryable();
+        var query = _dataContext.Sahalar
+       .Select(s => new SahaAramaDto
+       {
+           SahaId = s.SahaId,
+           SahaAdi = s.sahaAdı,
+           City = s.City,
+       });
+
         if (!string.IsNullOrEmpty(arananKelime))
         {
-            query = query.Where(i => i.sahaAdı.ToLower().Contains(arananKelime.ToLower()));
+            query = query.Where(i => i.SahaAdi.ToLower().Contains(arananKelime.ToLower()));
         }
-        ViewData["arananKelime"] = arananKelime;
 
-        return View(query.ToList());
+
+
+        var model = new SahaListViewModel
+        {
+            ArananKelime = arananKelime,
+            AramaSonuclari = query.ToList(),
+        };
+
+        return View(model);
 
     }
     public async Task<ActionResult> Details(int id)

@@ -1,3 +1,6 @@
+@model WellboreListViewModel
+
+
 @{
     ViewData["Title"] = "Wellbore Listesi";
 }
@@ -13,7 +16,7 @@
             <form asp-controller="Wellbore" asp-action="List" method="get">
                 <div class="input-group input-group-sm shadow-sm">
                     <input name="q" type="text" class="form-control" placeholder="Wellbore adı giriniz..."
-                        value="@ViewData["q"]">
+                        value="@Model.ArananKelime">
                     <button type="submit" class="btn btn-danger">
                         <i class="fas fa-search"></i> Ara
                     </button>
@@ -24,13 +27,13 @@
     <h4>Bazı Wellbore'lar</h4>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
 
-        @{
-            List<Wellbore> randomWellboreList = (List<Wellbore>)ViewData["RandomWellboreList"]!;
-            foreach (Wellbore wellbore in randomWellboreList)
-            {
 
+        @{
+            @foreach (var wellbore in Model.RandomWellbores)
+            {
                 @await Html.PartialAsync("Partials/Wellbores/_WellboreCards", wellbore)
             }
         }
+
     </div>
 </div>

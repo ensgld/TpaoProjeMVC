@@ -1,14 +1,14 @@
-@model Wellbore
+@model WellboreAramaDto
 
 <div class="col">
     <div class="card h-100 small-card shadow-sm border-0 hover-shadow">
         <div class="card-body p-2">
-            <h6 class="card-title text-primary mb-1">Wellbore adı: @Model.wellboreName</h6>
+            <h6 class="card-title text-primary mb-1">Wellbore adı: @Model.WellboreName</h6>
             <p class="card-text mb-2 medium text-danger">
-                Ait Olduğu Saha:@Model.Kuyu.Saha.sahaAdı
+                Ait Olduğu Saha:@Model.SahaAdi
             </p>
             <p class="card-text mb-2 medium text-success">
-                Ait Olduğu Kuyu:@Model.Kuyu.kuyuAdı
+                Ait Olduğu Kuyu:@Model.KuyuAdi
             </p>
 
             <a asp-controller="Wellbore" asp-action="Details" asp-route-id="@Model.WellboreId"

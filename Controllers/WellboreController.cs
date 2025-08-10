@@ -18,35 +18,44 @@ public class WellboreController : Controller
 
     public ActionResult Index()
     {
-        List<Wellbore> wellboreList = _dataContext.Wellbores.Include(k => k.Kuyu).ThenInclude(k => k.Saha).ToList();
-        var randomWellboreIds = _dataContext.Wellbores
-          .OrderBy(w => Guid.NewGuid())
-          .Select(w => w.WellboreId)
-          .Take(12)
-          .ToList();
+        var randomWellbores = _dataContext.Wellbores.OrderBy(r => Guid.NewGuid()).Take(16).Select(wellbore => new WellboreAramaDto
+        {
+            WellboreId = wellbore.WellboreId,
+            WellboreName = wellbore.wellboreName,
+            KuyuAdi = wellbore.Kuyu.kuyuAdı,
+            SahaAdi = wellbore.Kuyu.Saha.sahaAdı,
+        }).ToList();
 
-        var randomWellboreList = _dataContext.Wellbores
-            .AsNoTracking()
-            .Where(w => randomWellboreIds.Contains(w.WellboreId))
-            .Include(w => w.Kuyu)
-                .ThenInclude(k => k.Saha)
-            .ToList();
 
-        ViewData["RandomWellboreList"] = randomWellboreList;
-        return View(randomWellboreList);
+        var model = new WellboreListViewModel
+        {
+            RandomWellbores = randomWellbores,
+        };
+        return View(model);
 
 
     }
     public ActionResult List(string arananKelime)
     {
-        var query = _dataContext.Wellbores.Include(w => w.Kuyu).ThenInclude(w => w.Saha).AsQueryable();
+        var query = _dataContext.Wellbores.Include(wellbore => wellbore.Kuyu).ThenInclude(wellbore => wellbore.Saha).Select(wellbore => new WellboreAramaDto
+        {
+            WellboreId = wellbore.WellboreId,
+            WellboreName = wellbore.wellboreName,
+            KuyuAdi = wellbore.Kuyu.kuyuAdı,
+            SahaAdi = wellbore.Kuyu.Saha.sahaAdı
+
+        });
         if (!string.IsNullOrEmpty(arananKelime))
         {
-            query = query.Where(i => i.wellboreName.ToLower().Contains(arananKelime.ToLower()));
+            query = query.Where(i => i.WellboreName.ToLower().Contains(arananKelime.ToLower()));
         }
-        ViewData["arananKelime"] = arananKelime;
+        var model = new WellboreListViewModel
+        {
+            ArananKelime = arananKelime,
+            AramaSonuclari = query.ToList(),
+        };
 
-        return View(query.ToList());
+        return View(model);
 
     }
 

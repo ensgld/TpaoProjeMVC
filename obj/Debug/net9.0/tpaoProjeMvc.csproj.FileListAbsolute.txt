@@ -225,3 +225,8 @@ C:\Users\enesg\OneDrive\Masaüstü\tpaoProjeMvc\bin\Debug\net9.0\System.Linq.Dyn
 C:\Users\enesg\OneDrive\Masaüstü\tpaoProjeMvc\obj\Debug\net9.0\compressed\db0ts02afc-sf8vjqlny9.gz
 C:\Users\enesg\OneDrive\Masaüstü\tpaoProjeMvc\obj\Debug\net9.0\compressed\1y5lbibjqj-grg4v4ya5u.gz
 C:\Users\enesg\OneDrive\Masaüstü\tpaoProjeMvc\obj\Debug\net9.0\compressed\rhfmum9pff-8exd2ihmgh.gz
+C:\Users\enesg\OneDrive\Masaüstü\tpaoProjeMvc\obj\Debug\net9.0\tpaoProjeMvc.sourcelink.json
+C:\Users\enesg\OneDrive\Masaüstü\tpaoProjeMvc\bin\Debug\net9.0\FluentValidation.dll
+C:\Users\enesg\OneDrive\Masaüstü\tpaoProjeMvc\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
+C:\Users\enesg\OneDrive\Masaüstü\tpaoProjeMvc\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\enesg\OneDrive\Masaüstü\tpaoProjeMvc\obj\Debug\net9.0\tpaoProjeMvc.MvcApplicationPartsAssemblyInfo.cs

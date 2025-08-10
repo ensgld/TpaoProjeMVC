@@ -19,32 +19,41 @@ public class KuyuController : Controller
     }
 
     public ActionResult Index()
-    {   //burada rastgele bir şekilde database'den id'leri alıyoruz
-        var randomKuyuIds = _dataContext.Kuyular.
-        OrderBy(s => Guid.NewGuid())
-        .Select(s => s.KuyuId).Take(12).ToList();
-        //burada da rastegele aldığımız id'lerden sadece onları getiriyoruz
-        List<Kuyu> kuyuList = _dataContext.Kuyular.ToList();
-        var randomKuyuList = _dataContext.Kuyular
-       .AsNoTracking()
-       .Where(k => randomKuyuIds.Contains(k.KuyuId))
-       .Include(k => k.Saha)
-       .Include(k => k.wellbores)
-       .ToList();
+    {
+        var randomKuyular = _dataContext.Kuyular.OrderBy(r => Guid.NewGuid()).Take(16).Select(kuyu => new KuyuAramaDto
+        {
+            KuyuId = kuyu.KuyuId,
+            KuyuAdi = kuyu.kuyuAdı,
+            SahaAdi = kuyu.Saha.sahaAdı,
+        }).ToList();
 
-        ViewData["RandomKuyuList"] = randomKuyuList;
-        return View(kuyuList);
+
+        var model = new KuyuListViewModel
+        {
+            RandomKuyular = randomKuyular,
+        };
+        return View(model);
     }
     public ActionResult List(string arananKelime)
     {
-        var query = _dataContext.Kuyular.Include(k => k.Saha).AsQueryable();
+        var query = _dataContext.Kuyular.Include(k => k.Saha).Select(kuyu => new KuyuAramaDto
+        {
+            KuyuId = kuyu.KuyuId,
+            KuyuAdi = kuyu.kuyuAdı,
+            SahaAdi = kuyu.Saha.sahaAdı
+
+        });
         if (!string.IsNullOrEmpty(arananKelime))
         {
-            query = query.Where(i => i.kuyuAdı.ToLower().Contains(arananKelime.ToLower()));
+            query = query.Where(kuyu => kuyu.KuyuAdi.ToLower().Contains(arananKelime.ToLower()));
         }
-        ViewData["arananKelime"] = arananKelime;
+        var model = new KuyuListViewModel
+        {
+            ArananKelime = arananKelime,
+            AramaSonuclari = query.ToList(),
+        };
 
-        return View(query.ToList());
+        return View(model);
 
     }
     public async Task<ActionResult> Details(int id)

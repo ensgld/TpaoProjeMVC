@@ -1,4 +1,4 @@
-@model List<Kuyu>
+@model KuyuListViewModel
 @{
     ViewData["Title"] = "Kuyu Listesi";
 }
@@ -13,7 +13,8 @@
         <div class="col-md-6 col-lg-5">
             <form asp-controller="Kuyu" asp-action="List" method="get">
                 <div class="input-group input-group-sm shadow-sm">
-                    <input name="arananKelime" type="text" class="form-control" placeholder="Kuyu adı giriniz...">
+                    <input name="arananKelime" type="text" class="form-control" value="@Model.ArananKelime"
+                        placeholder="Kuyu adı giriniz...">
                     <button type="submit" class="btn btn-success">
                         <i class="fas fa-search"></i> Ara
                     </button>
@@ -24,10 +25,8 @@
     <h4>Bazı Kuyular</h4>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
         @{
-            List<Kuyu> randomKuyuList = (List<Kuyu>)ViewData["RandomKuyuList"]!;
-            foreach (Kuyu kuyu in randomKuyuList)
+            @foreach (var kuyu in Model.RandomKuyular)
             {
-
                 @await Html.PartialAsync("Partials/Kuyu/_KuyuCards", kuyu)
             }
         }
